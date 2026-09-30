@@ -1,0 +1,28 @@
+# Seeded battery (lives 5, Hadouken 80). Open PASS WORD (prefilled), type another
+# password (3475 5668 2581) and confirm. The save must not be restored.
+400 hold 6 Start          # skip Capcom logo
+600 hold 6 Start          # skip intro text
+1300 hold 6 Start         # skip title logo animation
+1400 hold 6 Down          # cursor to PASS WORD
+1440 hold 6 Start
+1650 snap                 # prefilled password
+1650 poke 7E1E60 02       # digits are stored as value-1
+1650 poke 7E1E61 03
+1650 poke 7E1E62 06
+1650 poke 7E1E63 04
+1650 poke 7E1E64 04
+1650 poke 7E1E65 05
+1650 poke 7E1E66 05
+1650 poke 7E1E67 07
+1650 poke 7E1E68 01
+1650 poke 7E1E69 04
+1650 poke 7E1E6A 07
+1650 poke 7E1E6B 00
+1660 hold 6 Down
+1680 hold 6 Down
+1700 hold 6 Down          # cursor to END
+1720 snap                 # typed password
+1730 hold 6 Start
+2400 snap                 # stage select
+2400 dump 7E1F7A 23 work/mmx/typed/blk.bin
+2410 exit

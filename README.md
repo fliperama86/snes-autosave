@@ -6,7 +6,8 @@ toolkit and notes used to build them.
 | folder | contents |
 |---|---|
 | `topracer2/` | Top Racer 2 (Japan, Piko 2018 reissue): patch source, build, tests |
-| `harness/` | headless MAME harness: scripted input, screenshots, memory dumps, write and breakpoint tracing |
+| `megamanx/` | Mega Man X (Legacy Collection ROM): patch source, build, tests |
+| `harness/` | MAME harness: scripted input, screenshots, memory dumps, write and breakpoint tracing |
 | `tools/` | disassembler, cross-references, ROM header and free space, IPS writer |
 | `docs/` | [playbook](docs/playbook.md) for adding saves to a new game, [harness reference](docs/harness.md) |
 

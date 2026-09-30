@@ -1,0 +1,11 @@
+# Seeded battery (lives 5, Hadouken 80). GAME START on the title menu begins a
+# new game: the progress block is cleared, the SRAM slots stay as they were
+# until stage select opens (never reached here).
+400 hold 6 Start          # skip Capcom logo
+600 hold 6 Start          # skip intro text
+1300 hold 6 Start         # skip title logo animation
+1440 hold 6 Start         # GAME START (default cursor)
+2000 snap
+3000 snap                 # intro stage running
+3000 dump 7E1F7A 23 work/mmx/newgame/blk.bin
+3010 exit

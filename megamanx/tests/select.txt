@@ -1,0 +1,27 @@
+# Boot, open PASS WORD, enter 8441 2136 4421 (all bosses, all items), confirm.
+# Reaches stage select, which saves.
+400 hold 6 Start          # skip Capcom logo
+600 hold 6 Start          # skip intro text
+1300 hold 6 Start         # skip title logo animation
+1400 hold 6 Down          # cursor to PASS WORD
+1440 hold 6 Start
+1650 poke 7E1E60 07       # digits are stored as value-1
+1650 poke 7E1E61 03
+1650 poke 7E1E62 03
+1650 poke 7E1E63 00
+1650 poke 7E1E64 01
+1650 poke 7E1E65 00
+1650 poke 7E1E66 02
+1650 poke 7E1E67 05
+1650 poke 7E1E68 03
+1650 poke 7E1E69 03
+1650 poke 7E1E6A 01
+1650 poke 7E1E6B 00
+1660 hold 6 Down
+1680 hold 6 Down
+1700 hold 6 Down          # cursor to END
+1720 snap
+1730 hold 6 Start
+2400 snap                 # stage select
+2400 dump 7E1F7A 23 work/mmx/select/blk.bin
+2410 exit

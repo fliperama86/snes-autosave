@@ -14,6 +14,18 @@ this repo, and what went wrong the first time.
   whether a 512-byte copier header is present (strip it first). Reissues and
   translations differ from the original release, so pin the CRC in the build
   script.
+- **Unknown CRC?** Search for the CRC32 and MD5. Randomizer and
+  achievement projects list hashes of re-releases: the Mega Man X dump here
+  turned out to be the Legacy Collection extract, US 1.0 code plus stubs that
+  write to unused registers.
+- **Check for copy protection that probes SRAM.** Some games write to the
+  SRAM area and read back, crippling themselves when the write sticks.
+  Declaring SRAM trips it. Scan the ROM for long stores and compares to banks
+  `$70-$7D` (`8F/CF xx xx 70`), then for tamper checks that compare bytes of
+  those routines (`LDA long ROM ; CMP long ROM ; BEQ`). Redirect each probe
+  to its "no SRAM" path without touching the bytes the tamper checks read.
+  Verify with a control build that only sets the header: the counters must
+  climb there and stay at 0 with the fix (Mega Man X README).
 - **Find free space.** `romhdr.py` lists runs of `$00`/`$FF`. Whole empty
   banks at the end of the image are the easiest home for new code. If there
   are none, the ROM can be expanded, which changes the header size byte.
@@ -52,6 +64,9 @@ money, upgrades, lives, unlocked items, standings.
 - **Without passwords,** diff WRAM before and after a progress event (beating
   a level, buying an item) and keep the bytes that change consistently.
 
+- **Read the new-game setup.** The code that starts a new game clears the
+  progress block field by field, which gives its exact bounds.
+
 The progress variables usually sit in one contiguous block. Find its bounds;
 the whole block is easier and safer to save than a list of fields.
 
@@ -72,6 +87,10 @@ You need moments when the state is complete and consistent.
 - **Beware WRAM clears.** Program transitions may clear most of WRAM (a DMA
   fill) and rebuild it from the snapshot. A flag you keep in WRAM may not
   survive; keep patch state in SRAM.
+
+- **A menu screen that always follows progress** is a good save point. In
+  Mega Man X the stage select opens after every cleared stage, exit and game
+  over, and the attract demo never reaches it.
 
 Prefer saving at the end of a complete step over saving the moment one value
 changes. A save that holds "race counted but points not awarded" is worse
@@ -111,6 +130,11 @@ Two options, in order of preference:
    and when that password is confirmed unchanged, restores the full block.
    The player sees a familiar screen, typed passwords keep working, and the
    game's own setup code runs.
+   The entry screen may already start from a "last password" buffer
+   (Mega Man X copies `$7EFFCB` into the grid), which is the natural place
+   to put the saved password. If the encoder mixes in random bits, one state
+   has many passwords: remember the digits you prefilled and compare the
+   confirmed digits with those, not the decoded state with the save.
 2. **At boot.** Copy the save into RAM before the title. Simpler, but the
    title, demo or new-game code may reinitialize parts of it, and there is no
    way to start fresh without a menu option.
@@ -187,5 +211,10 @@ that setup, and cleared by the new-game code.
 - A text-input screen may keep typed characters somewhere other than the
   buffer the game checks (Top Racer 2 copies a grid into the buffer on
   confirm), so poke the source, not the buffer.
+- asar misassembles `bra $818175` written with a literal long address;
+  put a label at the target instead.
+- A windowed MAME stops at a "press any key" warnings screen for imperfect
+  drivers. `run.sh` skips it by seeding the cfg with a recent warning record
+  and `skip_warnings` (see the comments there).
 - MAME needs the 64-byte SPC700 boot ROM (`roms/snes/spc700.rom`, CRC32
   `44BB3A40`), which is not in this repo.

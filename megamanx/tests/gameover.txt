@@ -1,0 +1,29 @@
+# Seeded battery (lives 5, Hadouken 80). Resume via PASS WORD, enter a boss stage,
+# set lives to 0 and force X to die. The game goes to a password screen, then
+# stage select, which saves. Records what lives value the game sets.
+400 hold 6 Start          # skip Capcom logo
+600 hold 6 Start          # skip intro text
+1300 hold 6 Start         # skip title logo animation
+1400 hold 6 Down          # cursor to PASS WORD
+1440 hold 6 Start
+1650 snap                 # prefilled password
+1660 hold 6 Down
+1680 hold 6 Down
+1700 hold 6 Down          # cursor to END
+1730 hold 6 Start
+2420 hold 6 Up            # stage select: cursor to a boss stage
+2440 hold 6 Y             # enter it
+2850 snap                 # in the stage
+2860 watch 7E1F9D 3 work/mmx/gameover/watch.log
+# Death is HP 0 with the "hit" bit and action state $0C; poking HP alone does nothing.
+2870 poke 7E1F80 00       # lives 0
+2870 poke 7E0BCF 80       # HP 0, hit flag
+2870 poke 7E0BAA 0C       # action: dying
+2870 poke 7E0BAB 00
+3000 snap                 # death flash
+3200 snap                 # password screen
+3300 hold 6 Start         # leave it, goes to stage select
+4000 snap                 # stage select
+4000 dump 7E1F7A 23 work/mmx/gameover/blk.bin
+4000 dump 7E1F9D 3 work/mmx/gameover/prot.bin
+4010 exit

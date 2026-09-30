@@ -7,7 +7,7 @@ cd "$(dirname "$0")/../.."
 tr=topracer2
 $tr/build.sh >/dev/null
 rom=$tr/out/tr2-save.sfc
-export WORK=work/tr2
+export WORK=work/tr2 FAST=1
 rm -rf "$WORK"; mkdir -p "$WORK"/{race1,resume,resume_race2,newgame,typed,demo}
 nv=nv/snes/tr2-save.nv
 

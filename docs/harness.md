@@ -1,7 +1,8 @@
 # Harness reference
 
-`harness/run.lua` drives MAME's `snes` driver from a command file. Runs are
-headless and about 10 times faster than real time.
+`harness/run.lua` drives MAME's `snes` driver from a command file. Runs show
+a window at normal speed by default; `FAST=1` unthrottles the window and
+`HEADLESS=1` runs without one, both about 10 times faster than real time.
 
 ## Running
 
@@ -14,6 +15,8 @@ harness/par.sh <rom> <name>:<cmdfile> [<name>:<cmdfile> ...]
 |---|---|
 | `WORK` | work directory for snapshots, states and battery files (default `work`) |
 | `DEBUG=1` | enable the debugger, needed by `bp` |
+| `FAST=1` | run the window unthrottled |
+| `HEADLESS=1` | no window, unthrottled |
 | `SHEET` | where `run.sh` writes the contact sheet (default `$WORK/sheet.png`) |
 
 `par.sh` gives each run the work directory `$WORK/<name>` and stacks their

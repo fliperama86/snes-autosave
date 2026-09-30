@@ -1,0 +1,29 @@
+# No input at all: the title screen idles into the attract demo (gameplay shown).
+# The demo must never save, even though it runs long past its start.
+1300 hold 6 Start         # skip title logo animation; then leave the title menu alone
+1310 watch 7E1F9D 3 work/mmx/demo/watch.log   # the demo falls and destroys enemies: SRAM probes run
+2000 snap
+3000 snap
+4000 snap
+5000 snap
+6000 snap
+7000 snap
+8000 snap
+9000 snap
+10000 snap
+11000 snap
+12000 snap
+13000 snap
+14000 snap
+15000 snap
+16000 snap
+17000 snap
+18000 snap
+19000 snap
+20000 snap
+21000 snap
+22000 snap
+23000 snap
+24000 snap
+24005 dump 7E1F9D 3 work/mmx/demo/prot.bin
+24010 exit
