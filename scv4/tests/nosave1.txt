@@ -1,0 +1,12 @@
+# Commands use @W@ for the run's work directory; run_tests.sh substitutes it.
+# Boot timing: Start before ~700 is ignored; menu input is ignored ~30 frames
+# after opening and the name grid ~135 frames after choosing the item.
+# New game, stay in 1-1-1, exit. Block 0 of quest 0 never saves.
+1700 hold 4 Start          # open PLAY SELECT
+1800 hold 4 Start          # START
+1990 hold 4 A              # name "A"
+2020 hold 4 Start          # confirm name
+2150 hold 4 Start          # skip the intro; block 1-1-1 is playable at ~2300
+3000 dump 7E0070 2 @W@/mode.bin
+3000 dump 7E0086 4 @W@/w_0086.bin
+3010 exit

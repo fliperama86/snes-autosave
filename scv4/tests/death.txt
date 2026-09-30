@@ -1,0 +1,21 @@
+# Commands use @W@ for the run's work directory; run_tests.sh substitutes it.
+# Boot timing: Start before ~700 is ignored; menu input is ignored ~30 frames
+# after opening and the name grid ~135 frames after choosing the item.
+# Resume as in resume.txt, then kill Simon by zeroing health.
+1700 hold 4 Start          # open PLAY SELECT
+1800 hold 4 Down           # CONTINUE
+1840 hold 4 Start
+1990 hold 4 A              # name "A"
+2020 hold 4 Start          # confirm name: the password grid opens
+2120 dump 7E1C20 10 @W@/grid.bin   # prefilled grid
+2150 hold 4 Start
+3000 poke 7E13F4 00        # health 0: death, checkpoint block, then block entry saves
+3600 dump 7E0070 2 @W@/mode.bin
+3600 dump 7E007C 4 @W@/w_007C.bin
+3600 dump 7E0086 4 @W@/w_0086.bin
+3600 dump 7E008E 6 @W@/w_008E.bin
+3600 dump 7E13F0 6 @W@/w_13F0.bin
+3600 dump 7E1F40 4 @W@/w_1F40.bin
+3600 dump 7E1600 6 @W@/w_1600.bin
+3600 dump 7E19C0 40 @W@/w_19C0.bin
+3610 exit

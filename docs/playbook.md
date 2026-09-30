@@ -135,6 +135,9 @@ Two options, in order of preference:
    to put the saved password. If the encoder mixes in random bits, one state
    has many passwords: remember the digits you prefilled and compare the
    confirmed digits with those, not the decoded state with the save.
+   If the grid opens empty (Super Castlevania IV), fill it from the save
+   with the game's own password builder: swap the saved values into the
+   variables it reads, call it, then put the live values back.
 2. **At boot.** Copy the save into RAM before the title. Simpler, but the
    title, demo or new-game code may reinitialize parts of it, and there is no
    way to start fresh without a menu option.
@@ -211,6 +214,9 @@ that setup, and cleared by the new-game code.
 - A text-input screen may keep typed characters somewhere other than the
   buffer the game checks (Top Racer 2 copies a grid into the buffer on
   confirm), so poke the source, not the buffer.
+- asar sizes an immediate from its literals: `ldy #!LEN` with
+  `!LEN = 4+4+6` assembles as an 8-bit operand, which desyncs 16-bit code.
+  Write `ldy.w #!LEN` whenever the value is an expression or a define.
 - asar misassembles `bra $818175` written with a literal long address;
   put a label at the target instead.
 - A windowed MAME stops at a "press any key" warnings screen for imperfect

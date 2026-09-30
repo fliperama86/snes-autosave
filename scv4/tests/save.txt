@@ -1,0 +1,29 @@
+# Commands use @W@ for the run's work directory; run_tests.sh substitutes it.
+# Boot timing: Start before ~700 is ignored; menu input is ignored ~30 frames
+# after opening and the name grid ~135 frames after choosing the item.
+# New game, poke a full power-up set in 1-1-1, walk to the end of the block.
+1700 hold 4 Start          # open PLAY SELECT
+1800 hold 4 Start          # START
+1990 hold 4 A              # name "A"
+2020 hold 4 Start          # confirm name
+2150 hold 4 Start          # skip the intro; block 1-1-1 is playable at ~2300
+2400 poke 7E0092 02       # whip
+2400 poke 7E008E 03        # subweapon
+2400 poke 7E0090 01        # multi-shot
+2400 poke 7E13F2 42        # hearts (BCD)
+2400 poke 7E007C 03        # lives
+2400 poke 7E1F40 34        # score $1234 (low byte, high byte)
+2400 poke 7E1F41 12
+2290 hold 900 Right        # walk right, two jumps over the pits
+2760 hold 25 B
+2842 hold 25 B
+3040 dump 7E0086 2 @W@/blk_end.bin    # block 1-1-1 ends at ~3040 (mode 6)
+3200 dump 7E0070 2 @W@/mode.bin
+3200 dump 7E007C 4 @W@/w_007C.bin
+3200 dump 7E0086 4 @W@/w_0086.bin
+3200 dump 7E008E 6 @W@/w_008E.bin
+3200 dump 7E13F0 6 @W@/w_13F0.bin
+3200 dump 7E1F40 4 @W@/w_1F40.bin
+3200 dump 7E1600 6 @W@/w_1600.bin
+3200 dump 7E19C0 40 @W@/w_19C0.bin
+3210 exit

@@ -1,0 +1,51 @@
+# Commands use @W@ for the run's work directory; run_tests.sh substitutes it.
+# Boot timing: Start before ~700 is ignored; menu input is ignored ~30 frames
+# after opening and the name grid ~135 frames after choosing the item.
+# No input at all: the attract demo starts at ~11500 and ends at ~13000.
+# It must not save ($4A = 1 in the demo).
+11000 dump 7E004A 2 @W@/d4a_11000.bin
+11000 dump 7E0070 2 @W@/d70_11000.bin
+11000 dump 7E0086 2 @W@/d86_11000.bin
+11200 dump 7E004A 2 @W@/d4a_11200.bin
+11200 dump 7E0070 2 @W@/d70_11200.bin
+11200 dump 7E0086 2 @W@/d86_11200.bin
+11400 dump 7E004A 2 @W@/d4a_11400.bin
+11400 dump 7E0070 2 @W@/d70_11400.bin
+11400 dump 7E0086 2 @W@/d86_11400.bin
+11600 dump 7E004A 2 @W@/d4a_11600.bin
+11600 dump 7E0070 2 @W@/d70_11600.bin
+11600 dump 7E0086 2 @W@/d86_11600.bin
+11800 dump 7E004A 2 @W@/d4a_11800.bin
+11800 dump 7E0070 2 @W@/d70_11800.bin
+11800 dump 7E0086 2 @W@/d86_11800.bin
+12000 dump 7E004A 2 @W@/d4a_12000.bin
+12000 dump 7E0070 2 @W@/d70_12000.bin
+12000 dump 7E0086 2 @W@/d86_12000.bin
+12200 dump 7E004A 2 @W@/d4a_12200.bin
+12200 dump 7E0070 2 @W@/d70_12200.bin
+12200 dump 7E0086 2 @W@/d86_12200.bin
+12400 dump 7E004A 2 @W@/d4a_12400.bin
+12400 dump 7E0070 2 @W@/d70_12400.bin
+12400 dump 7E0086 2 @W@/d86_12400.bin
+12600 dump 7E004A 2 @W@/d4a_12600.bin
+12600 dump 7E0070 2 @W@/d70_12600.bin
+12600 dump 7E0086 2 @W@/d86_12600.bin
+12800 dump 7E004A 2 @W@/d4a_12800.bin
+12800 dump 7E0070 2 @W@/d70_12800.bin
+12800 dump 7E0086 2 @W@/d86_12800.bin
+13000 dump 7E004A 2 @W@/d4a_13000.bin
+13000 dump 7E0070 2 @W@/d70_13000.bin
+13000 dump 7E0086 2 @W@/d86_13000.bin
+13200 dump 7E004A 2 @W@/d4a_13200.bin
+13200 dump 7E0070 2 @W@/d70_13200.bin
+13200 dump 7E0086 2 @W@/d86_13200.bin
+13400 dump 7E004A 2 @W@/d4a_13400.bin
+13400 dump 7E0070 2 @W@/d70_13400.bin
+13400 dump 7E0086 2 @W@/d86_13400.bin
+13600 dump 7E004A 2 @W@/d4a_13600.bin
+13600 dump 7E0070 2 @W@/d70_13600.bin
+13600 dump 7E0086 2 @W@/d86_13600.bin
+13800 dump 7E004A 2 @W@/d4a_13800.bin
+13800 dump 7E0070 2 @W@/d70_13800.bin
+13800 dump 7E0086 2 @W@/d86_13800.bin
+14000 exit
