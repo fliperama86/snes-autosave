@@ -1,0 +1,14 @@
+# Seeded with race1's save: CONTINUE > PASSWORD, confirm the prefilled one.
+430 hold 3 Start
+600 hold 3 Down
+620 hold 3 Down
+660 hold 3 Start          # CONTINUE
+870 hold 6 Y              # PASSWORD
+1000 snap                 # prefilled password
+1010 hold 6 Y             # confirm (cursor starts on END)
+1300 snap
+1400 hold 6 Y             # RACE -> track info
+1650 snap                 # expect Ayers Rock
+1650 dump 7E1CD7 11C work/tr2/resume/blk.bin
+1650 dump 7EF000 180 work/tr2/resume/tbl.bin
+1651 exit

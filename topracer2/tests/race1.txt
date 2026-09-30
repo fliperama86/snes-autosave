@@ -1,0 +1,20 @@
+# New game on empty SRAM, win race 1 (autopilot + forced position), reach race 2.
+430 hold 3 Start          # title -> menu
+600 hold 3 Up             # cursor to RACE GAME
+640 hold 3 Start          # new championship
+910 hold 6 Y              # pre-race menu: RACE -> track info
+1100 hold 6 Y             # track info -> shop
+1300 hold 6 Start         # shop -> race
+1600 hold 600 X           # hold gas through the countdown
+2200 auto 7E0205 13500 0 15   # steer on the car's lateral position
+10200 pin 7E01A2 0        # force 1st place late in the race so we qualify
+10200 pin 7E0A1C 0
+10200 pin 7EC426 0
+15700 unpin
+15800 snap                # race results
+15810 hold 6 Start
+16210 hold 6 Start        # championship table -> next track info
+16450 dump 7E1CD7 11C work/tr2/race1/blk.bin
+16450 dump 7EF000 180 work/tr2/race1/tbl.bin
+16500 snap                # expect Ayers Rock
+16600 exit

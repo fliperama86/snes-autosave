@@ -1,0 +1,2 @@
+# Empty SRAM, leave the title idle so the attract demo runs: nothing may be saved.
+5000 exit

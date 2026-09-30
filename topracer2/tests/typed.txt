@@ -1,0 +1,35 @@
+# Seeded with race1's save: type a different password (the initial one) instead of the prefilled one.
+# The typed characters live in the entry grid at $7E17D7, one every 6 bytes; the
+# game copies them into the $7E1780 password buffer when END is confirmed.
+430 hold 3 Start
+600 hold 3 Down
+620 hold 3 Down
+660 hold 3 Start          # CONTINUE
+870 hold 6 Y              # PASSWORD
+1010 hold 6 Y             # confirm (cursor starts on END)
+1400 hold 6 Y             # RACE -> track info
+1005 poke 7E17D7 56
+1005 poke 7E17DD 46
+1005 poke 7E17E3 43
+1005 poke 7E17E9 34
+1005 poke 7E17EF 36
+1005 poke 7E17F5 52
+1005 poke 7E17FB 32
+1005 poke 7E1801 31
+1005 poke 7E1807 31
+1005 poke 7E180D 48
+1005 poke 7E1813 4A
+1005 poke 7E1819 37
+1005 poke 7E181F 46
+1005 poke 7E1825 34
+1005 poke 7E182B 43
+1005 poke 7E1831 28
+1005 poke 7E1837 39
+1005 poke 7E183D 34
+1005 poke 7E1843 31
+1005 poke 7E1849 59
+1005 poke 7E184F 44
+1005 poke 7E1855 44
+1650 snap                 # expect Auckland
+1650 dump 7E1CD7 11C work/tr2/typed/blk.bin
+1651 exit

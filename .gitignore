@@ -1,0 +1,14 @@
+# ROMs, firmware and build output are never committed
+*.sfc
+*.smc
+*.swc
+*.fig
+*.nv
+*.srm
+roms/
+*/rom/
+*/out/
+work/
+cfg/
+__pycache__/
+.DS_Store

@@ -1,0 +1,20 @@
+# Seeded with race1's save: resume, then win race 2 and check the next save.
+430 hold 3 Start
+600 hold 3 Down
+620 hold 3 Down
+660 hold 3 Start          # CONTINUE
+870 hold 6 Y              # PASSWORD
+1010 hold 6 Y             # confirm (cursor starts on END)
+1400 hold 6 Y             # RACE -> track info
+1700 hold 6 Y             # track info -> shop
+1900 hold 6 Start         # race 2
+2200 hold 600 X
+2800 auto 7E0205 13500 0 15
+10800 pin 7E01A2 0
+10800 pin 7E0A1C 0
+10800 pin 7EC426 0
+16300 unpin
+16350 hold 6 Start
+16750 hold 6 Start
+17000 snap                # expect the third Australian track
+17001 exit
